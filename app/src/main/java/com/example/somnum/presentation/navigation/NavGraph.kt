@@ -1,29 +1,29 @@
 package com.example.somnum.presentation.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.compose.rememberNavController
-import com.example.somnum.presentation.viewmodel.LoginViewModel
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-
-val navController = rememberNavController()
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import com.example.somnum.presentation.viewmodel.LoginViewModel
+import com.example.somnum.ui.screens.LoginScreen
 
 @Composable
-fun AppNavigation(viewModel: LoginViewModel = hiltViewModel()) {
-    val navController = rememberNavController()
-
-    NavHost(navController, startDestination = "login") {
+fun NavGraph(
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
+    NavHost(navController, startDestination = "login", modifier = modifier) {
         composable("login") {
+            val loginViewModel: LoginViewModel = hiltViewModel()
             LoginScreen(
-                viewModel = viewModel,
+                viewModel = loginViewModel,
                 onLoginSuccess = {
-                    navController.navigate("home") {
-                        popUpTo("login") { inclusive = true } // Pour empêcher de revenir à l'écran de login
-                    }
+                    navController.navigate("home")
                 }
             )
         }
-        composable("home") {
-            HomeScreen() // Écran d'accueil une fois connecté
-        }
+        // Ajoute d'autres destinations si nécessaire
     }
 }

@@ -1,54 +1,28 @@
 package com.example.somnum.presentation.viewmodel
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.somnum.data.repository.UserRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel(
-    private val userRepository: UserRepository // Injecter le repository via DI
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val userRepository: UserRepository
 ) : ViewModel() {
 
-    var email by mutableStateOf("")
-        private set
-
-    var password by mutableStateOf("")
-        private set
-
-    var loginState by mutableStateOf<LoginState>(LoginState.Idle)
-        private set
-
-    fun onEmailChange(newEmail: String) {
-        email = newEmail
-    }
-
-    fun onPasswordChange(newPassword: String) {
-        password = newPassword
-    }
-
-    fun login() {
+    fun login(email: String, password: String) {
         viewModelScope.launch {
-            loginState = LoginState.Loading
-            try {
-                val result = userRepository.login(email, password)
-                if (result.isSuccess) {
-                    loginState = LoginState.Success
-                } else {
-                    loginState = LoginState.Error("Invalid credentials")
-                }
-            } catch (e: Exception) {
-                loginState = LoginState.Error(e.localizedMessage ?: "Unknown error")
-            }
+            val response = userRepository.login(email, password)
+            // Gérer la réponse ici
         }
     }
 
-    // États de login
-    sealed class LoginState {
-        object Idle : LoginState()
-        object Loading : LoginState()
-        object Success : LoginState()
-        data class Error(val message: String) : LoginState()
+    fun signUp(email: String, password: String) {
+        viewModelScope.launch {
+            val response = userRepository.signUp(email, password)
+            // Gérer la réponse ici
+        }
     }
 }

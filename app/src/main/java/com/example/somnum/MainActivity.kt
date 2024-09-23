@@ -15,7 +15,11 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SomnumTheme {
-                LoginScreen(LoginViewModel())
+                if (LoginViewModel().isLogged()) {
+                    Router()
+                } else {
+                    LoginScreen(LoginViewModel())
+                }
             }
         }
     }

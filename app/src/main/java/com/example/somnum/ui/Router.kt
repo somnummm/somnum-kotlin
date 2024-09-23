@@ -65,7 +65,6 @@ fun Router() {
             1 -> PlannerScreen(modifier = Modifier.padding(innerPadding))
             2 -> SimulationScreen(modifier = Modifier.padding(innerPadding))
             3 -> SettingsScreen(modifier = Modifier.padding(innerPadding))
-
         }
     }
 }

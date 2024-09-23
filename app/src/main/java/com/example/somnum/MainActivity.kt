@@ -49,8 +49,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SomnumTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NotesList()
+                Scaffold(
+                    modifier = Modifier.fillMaxSize()
+                ) { innerPadding ->
+                    NotesList(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -64,7 +66,7 @@ data class Note(
 )
 
 @Composable
-fun NotesList() {
+fun NotesList(modifier: Modifier = Modifier) {
     val notes = remember { mutableStateListOf<Note>() }
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO){

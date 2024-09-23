@@ -18,7 +18,6 @@ plugins {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -36,39 +35,10 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // Core Kotlin + Android dependencies
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.10")
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.8.0")
 
-    // Jetpack Compose UI
-    implementation("androidx.compose.ui:ui:1.5.3")
-    implementation("androidx.compose.material:material:1.5.3")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.5.3")
-    implementation("androidx.compose.ui:ui-tooling:1.5.3")
-
-    // Navigation pour Jetpack Compose
-    implementation("androidx.navigation:navigation-compose:2.7.4")
-
-    // Hilt pour l'injection de dépendances
-    implementation("com.google.dagger:hilt-android:2.47")
-    kapt(libs.hilt.android.compiler)
-
-    // Hilt pour Jetpack Compose
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
-
-    // Coroutines pour gestion des tâches asynchrones
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-
-    // Retrofit (optionnel si tu utilises des APIs HTTP) + Moshi pour JSON parsing
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
-
-    // Supabase Client (remplace cela par la bibliothèque que tu utilises pour Supabase)
-    implementation(platform("io.github.jan-tennert.supabase:bom:2.0.0-rc-1"))
-    implementation("io.github.jan-tennert.supabase:postgrest-kt")
-    implementation("io.ktor:ktor-client-android:2.3.12")
+    implementation(platform(libs.bom))
+    implementation(libs.postgrest.kt)
+    implementation(libs.ktor.client.android)
 
     // Coil pour le chargement d'images dans Compose (optionnel)
     implementation("io.coil-kt:coil-compose:2.4.0")

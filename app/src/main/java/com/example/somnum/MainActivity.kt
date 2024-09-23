@@ -10,8 +10,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.example.somnum.presentation.navigation.NavGraph
-import com.example.somnum.ui.theme.SomnumTheme
 import dagger.hilt.android.AndroidEntryPoint
+import com.example.somnum.ui.screens.NotesScreen
+import com.example.somnum.ui.theme.SomnumTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -20,14 +21,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SomnumTheme {
-                val navController: NavHostController = rememberNavController()
                 Scaffold(
                     modifier = Modifier.fillMaxSize()
                 ) { innerPadding ->
-                    NavGraph(
-                        navController = navController,
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    NotesScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

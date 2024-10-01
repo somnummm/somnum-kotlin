@@ -28,12 +28,22 @@ class AuthRepository {
         }
     }
 
-    suspend fun signUpWithEmail(mail: String, passwd: String): Boolean {
-        supabase.auth.signUpWith(Email) {
-            email = mail
-            password = passwd
+    suspend fun signUpWithEmail(mail: String, passwd: String): String? {
+        if (mail.isEmpty() || passwd.isEmpty()) {
+            return "Email ou mot de passe ne peut pas être vide."
         }
-        return supabase.auth.currentUserOrNull() != null
+
+        return try {
+            supabase.auth.signUpWith(Email) {
+                email = mail
+                password = passwd
+            }
+            return null
+        } catch (e: Exception) {
+            when (e.message) {
+                else -> e.message
+            }
+        }
     }
 
     suspend fun signOut() {

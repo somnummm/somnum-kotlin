@@ -8,6 +8,5 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun PlannerScreen(modifier: Modifier = Modifier) {
-    // Contenu de l'écran d'accueil
     Text("Planner Screen", modifier = modifier.padding(16.dp))
 }

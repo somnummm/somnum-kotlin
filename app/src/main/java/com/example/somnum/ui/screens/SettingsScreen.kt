@@ -8,6 +8,5 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SettingsScreen(modifier: Modifier = Modifier) {
-    // Contenu de l'écran d'accueil
     Text("Settings Screen", modifier = modifier.padding(16.dp))
 }

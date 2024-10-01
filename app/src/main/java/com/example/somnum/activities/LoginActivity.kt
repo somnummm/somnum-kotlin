@@ -1,4 +1,4 @@
-package com.example.somnum
+package com.example.somnum.activities
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

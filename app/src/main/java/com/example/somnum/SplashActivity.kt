@@ -2,8 +2,9 @@ package com.example.somnum
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.activity.ComponentActivity
+import com.example.somnum.activities.LoginActivity
+import com.example.somnum.activities.MainActivity
 import com.example.somnum.viewmodel.LoginViewModel
 
 class SplashActivity : ComponentActivity() {

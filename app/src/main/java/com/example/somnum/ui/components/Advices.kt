@@ -13,6 +13,7 @@ import com.example.somnum.data.network.supabase
 import com.example.somnum.ui.theme.SomnumTheme
 import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 
@@ -87,7 +88,6 @@ fun AdviceCard(advice: Advice, modifier: Modifier = Modifier) {
         }
     }
 }
-
 
 
 @Composable

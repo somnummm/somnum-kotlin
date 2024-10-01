@@ -1,5 +1,6 @@
 package com.example.somnum.ui.screens
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -10,6 +11,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.rememberNavController
+import com.example.somnum.LoginActivity
+import com.example.somnum.MainActivity
 import com.example.somnum.viewmodel.LoginViewModel
 import kotlinx.coroutines.launch
 
@@ -18,7 +21,6 @@ fun LoginScreen(viewModel: LoginViewModel) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
-    val navController = rememberNavController()
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
 
@@ -47,7 +49,8 @@ fun LoginScreen(viewModel: LoginViewModel) {
                         if (result != null) {
                             Toast.makeText(context, result, Toast.LENGTH_SHORT).show()
                         } else {
-                            navController.navigate("home")
+                            context.startActivity(Intent(context, MainActivity::class.java))
+                            (context as LoginActivity).finish()
                         }
                     }
                     )

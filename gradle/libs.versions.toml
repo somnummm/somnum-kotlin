@@ -10,9 +10,12 @@ ktorClientAndroid = "2.3.12"
 lifecycleRuntimeKtx = "2.8.5"
 activityCompose = "1.9.2"
 composeBom = "2024.04.01"
+navigationCompose = "2.8.1"
+navigationComposeVersion = "2.8.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-navigation-compose-v280 = { module = "androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
 bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bom" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -29,6 +32,7 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientAndroid" }
 postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Somnum"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Somnum">
@@ -25,6 +25,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Somnum">
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Somnum" />
+
     </application>
 
 </manifest>

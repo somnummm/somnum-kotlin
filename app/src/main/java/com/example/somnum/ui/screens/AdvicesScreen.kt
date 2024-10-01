@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.somnum.supabase
+import com.example.somnum.data.network.supabase
 import com.example.somnum.ui.components.AdviceCard
 import com.example.somnum.ui.theme.SomnumTheme
 import io.github.jan.supabase.postgrest.from

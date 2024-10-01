@@ -16,6 +16,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 
+
+
 @Serializable
 data class Advice(
     val id: Int,
@@ -43,7 +45,8 @@ fun Advices(modifier: Modifier = Modifier) {
             text = "Conseils pour un meilleur sommeil",
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 16.dp)
+            modifier = Modifier.padding(bottom = 16.dp),
+            color = MaterialTheme.colorScheme.primary
         )
 
         LazyColumn(modifier = Modifier.weight(1f)) {
@@ -61,13 +64,13 @@ fun AdviceCard(advice: Advice, modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .padding(vertical = 8.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-        elevation = CardDefaults.cardElevation(4.dp)
+        elevation = CardDefaults.cardElevation(2.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
                 text = advice.title,
                 style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.primary
             )
 
@@ -76,19 +79,22 @@ fun AdviceCard(advice: Advice, modifier: Modifier = Modifier) {
             Text(
                 text = advice.description,
                 style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.padding(bottom = 8.dp)
             )
 
             Button(
-                onClick = { /* ouvrir URL du conseil */ },
+                onClick = {/* Do something */ },
+                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
             ) {
-                Text(text = "Voir plus")
+                Text(
+                    text = "Voir plus",
+                    color = MaterialTheme.colorScheme.onPrimary
+                )
             }
         }
     }
 }
-
-
 
 @Composable
 @Preview(showBackground = true)

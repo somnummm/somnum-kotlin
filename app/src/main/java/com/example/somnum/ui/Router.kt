@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.somnum.ui.screens.AdvicesScreen
 import com.example.somnum.ui.screens.HomeScreen
 import com.example.somnum.ui.screens.PlannerScreen
 import com.example.somnum.ui.screens.SettingsScreen
@@ -52,8 +53,8 @@ fun Router() {
                     onClick = { selectedItem = 2 }
                 )
                 NavigationBarItem(
-                    icon = { Icon(Icons.Filled.Settings, contentDescription = "Settings") },
-                    label = { Text("Settings") },
+                    icon = { Icon(Icons.Filled.Settings, contentDescription = "Advices") },
+                    label = { Text("Advices") },
                     selected = selectedItem == 3,
                     onClick = { selectedItem = 3 }
                 )
@@ -64,7 +65,7 @@ fun Router() {
             0 -> HomeScreen(modifier = Modifier.padding(innerPadding))
             1 -> PlannerScreen(modifier = Modifier.padding(innerPadding))
             2 -> SimulationScreen(modifier = Modifier.padding(innerPadding))
-            3 -> SettingsScreen(modifier = Modifier.padding(innerPadding))
+            3 -> AdvicesScreen(modifier = Modifier.padding(innerPadding))
 
         }
     }

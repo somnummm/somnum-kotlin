@@ -6,13 +6,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.somnum.ui.components.Advices
+
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
-    // Contenu de l'écran d'accueil
-    Column {
-        Advices()
-    }
+    Text("Home Screen", modifier = modifier.padding(16.dp))
 
 }

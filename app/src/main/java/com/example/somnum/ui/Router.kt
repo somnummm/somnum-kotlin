@@ -27,7 +27,6 @@ import com.example.somnum.ui.screens.SimulationScreen
 @Composable
 fun Router() {
     var selectedItem by remember { mutableIntStateOf(0) }
-    val items = listOf("Home", "Advices", "Settings")
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),

@@ -39,7 +39,7 @@ fun Router() {
                     3 -> "Advices"
                     else -> "Somnum"
                 }
-            ) { }
+            )
         },
         bottomBar = {
             NavigationBar {

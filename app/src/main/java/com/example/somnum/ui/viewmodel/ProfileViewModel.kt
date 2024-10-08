@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.somnum.data.network.supabase
 import com.example.somnum.data.repository.AuthRepository
 import io.github.jan.supabase.gotrue.auth
-import com.example.somnum.model.UserProfile
+import com.example.somnum.data.entities.UserProfile
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

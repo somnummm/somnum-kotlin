@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import com.example.somnum.activities.LoginActivity
 import com.example.somnum.activities.MainActivity
-import com.example.somnum.viewmodel.LoginViewModel
+import com.example.somnum.ui.viewmodel.LoginViewModel
 
 class SplashActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

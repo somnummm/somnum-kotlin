@@ -20,6 +20,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 
 
+
 @Serializable
 data class Advice(
     val id: Int,
@@ -43,12 +44,6 @@ fun AdvicesScreen(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Text(
-            text = "Advices for a better sleep",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.secondary
-        )
 
         LazyColumn(modifier = Modifier.weight(1f)) {
             items(advices) { advice ->
@@ -57,6 +52,7 @@ fun AdvicesScreen(modifier: Modifier = Modifier) {
         }
     }
 }
+
 
 
 @Composable

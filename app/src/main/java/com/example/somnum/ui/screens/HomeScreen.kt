@@ -11,6 +11,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.somnum.ui.components.charts.DonutChartSample
+import com.example.somnum.ui.components.typography.Title
 
 
 @Composable
@@ -20,6 +21,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        Title("Home")
         Text(
             text = "Your last night",
             fontSize = 24.sp,

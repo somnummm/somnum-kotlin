@@ -8,7 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import com.example.somnum.ui.theme.SomnumTheme
 import com.example.somnum.ui.screens.ProfileScreen
-import com.example.somnum.viewmodel.LoginViewModel
+import com.example.somnum.ui.viewmodel.LoginViewModel
 import com.example.somnum.viewmodel.ProfileViewModel
 
 

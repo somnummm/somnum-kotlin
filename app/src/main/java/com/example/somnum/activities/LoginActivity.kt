@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.somnum.ui.screens.LoginScreen
 import com.example.somnum.ui.theme.SomnumTheme
-import com.example.somnum.viewmodel.LoginViewModel
+import com.example.somnum.ui.viewmodel.LoginViewModel
 
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

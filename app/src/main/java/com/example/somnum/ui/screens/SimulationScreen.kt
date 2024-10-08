@@ -39,23 +39,30 @@ fun SimulationScreen(modifier: Modifier = Modifier) {
             fontWeight = FontWeight.SemiBold,
             color = MaterialTheme.colorScheme.secondary
         )
-
-        Button(
-            onClick = { simulationStarted = true },
-            shape = CircleShape,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary
-            ),
+        Row(
             modifier = Modifier
-                .size(120.dp)
-                .clip(CircleShape)
+                .fillMaxWidth()
+                .padding(bottom = 16.dp),
+            horizontalArrangement = Arrangement.Center
         ) {
-            Text(
-                text = "Démarrer une nuit",
-                style = MaterialTheme.typography.labelLarge
-            )
+            Button(
+                onClick = { simulationStarted = true },
+                shape = CircleShape,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary
+                ),
+                modifier = Modifier
+                    .size(120.dp)
+                    .clip(CircleShape)
+            ) {
+                Text(
+                    text = "Launch your night",
+                    style = MaterialTheme.typography.labelLarge
+                )
+            }
         }
+
 
         if (simulationStarted) {
             SleepSimulationComponent(

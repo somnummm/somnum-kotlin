@@ -6,10 +6,8 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -32,7 +30,7 @@ import com.example.somnum.activities.MainActivity
 import com.example.somnum.activities.ProfileActivity
 import com.example.somnum.ui.components.ProfileField
 import com.example.somnum.ui.components.ProfileHeader
-import com.example.somnum.viewmodel.LoginViewModel
+import com.example.somnum.ui.viewmodel.LoginViewModel
 import com.example.somnum.viewmodel.ProfileViewModel
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter

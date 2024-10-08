@@ -1,4 +1,4 @@
-package com.example.somnum.model
+package com.example.somnum.data.entities
 
 data class UserProfile(
     val id: String,

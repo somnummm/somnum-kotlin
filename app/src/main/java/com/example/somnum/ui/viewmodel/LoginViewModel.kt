@@ -1,4 +1,4 @@
-package com.example.somnum.viewmodel
+package com.example.somnum.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

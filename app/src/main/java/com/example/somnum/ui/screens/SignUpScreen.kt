@@ -34,7 +34,7 @@ import com.example.somnum.activities.LoginActivity
 import com.example.somnum.activities.MainActivity
 import com.example.somnum.activities.SignUpActivity
 import com.example.somnum.ui.components.SomnumInput
-import com.example.somnum.viewmodel.SignUpViewModel
+import com.example.somnum.ui.viewmodel.SignUpViewModel
 import kotlinx.coroutines.launch
 
 @Composable

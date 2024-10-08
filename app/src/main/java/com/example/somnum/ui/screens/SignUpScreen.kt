@@ -112,7 +112,7 @@ fun SignUpScreen(viewModel: SignUpViewModel) {
             },
             enabled = !isLoading
         ) {
-            Text(if (isLoading) "Loading..." else "S'inscrire")
+            Text(if (isLoading) "Loading..." else "Sign-up")
         }
         Spacer(modifier = Modifier.height(16.dp))
         TextButton(
@@ -120,7 +120,7 @@ fun SignUpScreen(viewModel: SignUpViewModel) {
                 context.startActivity(Intent(context, LoginActivity::class.java))
             }
         ) {
-            Text("Déjà inscrit ? Se connecter")
+            Text("Already signed-up ? Login")
         }
     }
 }

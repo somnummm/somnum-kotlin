@@ -94,7 +94,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
             },
             enabled = !isLoading
         ) {
-            Text(if (isLoading) "Loading..." else "Se connecter")
+            Text(if (isLoading) "Loading..." else "Login")
         }
         Spacer(modifier = Modifier.height(16.dp))
         TextButton(
@@ -103,7 +103,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
                 (context as LoginActivity).finish()
             }
         ) {
-            Text("S'inscrire")
+            Text("Sign-up")
         }
     }
 }

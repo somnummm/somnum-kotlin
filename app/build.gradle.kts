@@ -73,5 +73,7 @@ dependencies {
     implementation(platform(libs.bom))
     implementation(libs.postgrest.kt)
     implementation(libs.ktor.client.android)
+    implementation(libs.chart)
+
 
 }

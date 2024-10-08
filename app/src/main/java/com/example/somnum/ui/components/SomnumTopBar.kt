@@ -1,5 +1,6 @@
 package com.example.somnum.ui.components
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -15,12 +16,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.somnum.activities.ProfileActivity
 
 @Composable
-fun SomnumTopBar(titleText: String, onProfileClick: () -> Unit) {
+fun SomnumTopBar(titleText: String) {
+    val context = LocalContext.current
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -35,7 +39,14 @@ fun SomnumTopBar(titleText: String, onProfileClick: () -> Unit) {
             fontWeight = FontWeight.Bold,
             modifier = Modifier.weight(1f)
         )
-        IconButton(onClick = onProfileClick) {
+        IconButton(onClick = {
+            context.startActivity(
+                Intent(
+                    context,
+                    ProfileActivity::class.java
+                )
+            )
+        }) {
             Box(
                 modifier = Modifier
                     .background(

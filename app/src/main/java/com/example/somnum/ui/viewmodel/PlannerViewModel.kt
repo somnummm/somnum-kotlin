@@ -4,7 +4,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.somnum.data.repository.Planner
+import com.example.somnum.data.entities.Planner
 import com.example.somnum.data.repository.PlannerRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

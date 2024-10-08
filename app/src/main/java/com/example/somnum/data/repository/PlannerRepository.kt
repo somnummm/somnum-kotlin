@@ -1,6 +1,7 @@
 package com.example.somnum.data.repository
 
 import android.util.Log
+import com.example.somnum.data.entities.Planner
 import com.example.somnum.data.network.supabase
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.postgrest.query.Columns
@@ -17,7 +18,6 @@ class PlannerRepository {
             .from("planner")
             .select {
                 filter {
-                    //TODO : filtrer par la date et par le userID
                     eq("date",date)
                     eq("userId",userId)
                 }
@@ -38,28 +38,4 @@ class PlannerRepository {
     }
 }
 
-@Serializable
-data class Planner(
-    val id: Int? = null,
-    val date: String,           // Format ISO: "YYYY-MM-DDTHH:mm:ss"
-    @SerialName("sleepTime")
-    val sleepTime: String,      // Format ISO: "YYYY-MM-DDTHH:mm:ss"
-    @SerialName("wakeTime")
-    val wakeTime: String,       // Format ISO: "YYYY-MM-DDTHH:mm:ss"
-    @SerialName("createdAt")
-    val createdAt: String? = null,  // Format ISO timestamp
-    @SerialName("userId")
-    val userId: String
-) {
-    fun getSleepTime(): Any {
-     return sleepTime
-    }
 
-    fun getWakeTime(): Any {
-        return getWakeTime()
-    }
-
-    fun getSleepDuration(): Any {
-        return getSleepDuration()
-    }
-}

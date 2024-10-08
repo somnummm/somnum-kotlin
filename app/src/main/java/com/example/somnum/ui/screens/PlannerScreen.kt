@@ -18,7 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.somnum.data.repository.Planner
+import com.example.somnum.data.entities.Planner
 import com.example.somnum.ui.components.CalendarComponent
 import com.example.somnum.ui.viewmodel.PlannerViewModel
 import kotlinx.datetime.LocalDateTime

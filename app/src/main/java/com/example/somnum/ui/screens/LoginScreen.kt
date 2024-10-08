@@ -1,5 +1,6 @@
 package com.example.somnum.ui.screens
 
+import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.Image
@@ -18,6 +19,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,11 +42,25 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(viewModel: LoginViewModel) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var isLoading by remember { mutableStateOf(false) }
+    val sharedPreferences = LocalContext.current.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+    var email by remember { mutableStateOf(sharedPreferences.getString("email", "") ?: "") }
+    var password by remember { mutableStateOf(sharedPreferences.getString("password", "") ?: "") }
+    val isLoading by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
+
+    LaunchedEffect(Unit) {
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            coroutineScope.launch {
+                viewModel.login(email, password, onResult = { result ->
+                    if (result == null) {
+                        context.startActivity(Intent(context, MainActivity::class.java))
+                        (context as LoginActivity).finish()
+                    }
+                })
+            }
+        }
+    }
 
     Column(
         modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
@@ -85,6 +101,11 @@ fun LoginScreen(viewModel: LoginViewModel) {
                         if (result != null) {
                             Toast.makeText(context, result, Toast.LENGTH_SHORT).show()
                         } else {
+                            with(sharedPreferences.edit()) {
+                                putString("email", email)
+                                putString("password", password)
+                                apply()
+                            }
                             context.startActivity(Intent(context, MainActivity::class.java))
                             (context as LoginActivity).finish()
                         }

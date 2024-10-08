@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.somnum.data.network.supabase
 import com.example.somnum.ui.components.AdviceCard
 import com.example.somnum.ui.components.typography.Title
@@ -17,7 +18,6 @@ import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
-
 
 
 @Serializable
@@ -43,7 +43,12 @@ fun AdvicesScreen(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Title(title = "Conseils pour un meilleur sommeil")
+        Text(
+            text = "Advices for a better sleep",
+            fontSize = 24.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.secondary
+        )
 
         LazyColumn(modifier = Modifier.weight(1f)) {
             items(advices) { advice ->
@@ -52,7 +57,6 @@ fun AdvicesScreen(modifier: Modifier = Modifier) {
         }
     }
 }
-
 
 
 @Composable

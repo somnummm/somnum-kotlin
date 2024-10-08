@@ -18,20 +18,29 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import com.example.somnum.ui.components.SomnumTopBar
 import com.example.somnum.ui.screens.AdvicesScreen
 import com.example.somnum.ui.screens.HomeScreen
 import com.example.somnum.ui.screens.PlannerScreen
-import com.example.somnum.ui.screens.SettingsScreen
 import com.example.somnum.ui.screens.SimulationScreen
 
 @Composable
 fun Router() {
     var selectedItem by remember { mutableIntStateOf(0) }
-    val items = listOf("Home", "Advices", "Settings")
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        topBar = {
+            SomnumTopBar(
+                titleText = when (selectedItem) {
+                    0 -> "Home"
+                    1 -> "Planner"
+                    2 -> "Simulation"
+                    3 -> "Advices"
+                    else -> "Somnum"
+                }
+            ) { }
+        },
         bottomBar = {
             NavigationBar {
                 NavigationBarItem(
@@ -66,7 +75,6 @@ fun Router() {
             1 -> PlannerScreen(modifier = Modifier.padding(innerPadding))
             2 -> SimulationScreen(modifier = Modifier.padding(innerPadding))
             3 -> AdvicesScreen(modifier = Modifier.padding(innerPadding))
-
         }
     }
 }

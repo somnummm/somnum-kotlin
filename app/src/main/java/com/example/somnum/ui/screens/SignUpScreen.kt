@@ -47,15 +47,21 @@ fun SignUpScreen(viewModel: SignUpViewModel) {
     val context = LocalContext.current
 
     Column(
-        modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
 
-    ) {
+        ) {
         Box(
             modifier = Modifier
                 .size(130.dp)
-                .border(width = 2.dp, color = MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(64.dp))
+                .border(
+                    width = 2.dp,
+                    color = MaterialTheme.colorScheme.primary,
+                    shape = RoundedCornerShape(64.dp)
+                )
                 .align(Alignment.CenterHorizontally)
         ) {
             Image(

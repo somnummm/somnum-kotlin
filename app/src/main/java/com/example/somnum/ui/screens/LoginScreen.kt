@@ -13,13 +13,13 @@ import androidx.compose.ui.unit.dp
 import com.example.somnum.activities.LoginActivity
 import com.example.somnum.activities.MainActivity
 import com.example.somnum.activities.SignUpActivity
-import com.example.somnum.viewmodel.LoginViewModel
+import com.example.somnum.ui.viewmodel.LoginViewModel
 import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(viewModel: LoginViewModel) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("Clem83Gambier@gmail.com") }
+    var password by remember { mutableStateOf("test") }
     var isLoading by remember { mutableStateOf(false) }
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current

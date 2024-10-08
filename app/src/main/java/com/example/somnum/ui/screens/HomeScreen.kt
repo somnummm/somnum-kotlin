@@ -19,8 +19,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             .padding(16.dp)
     ) {
         Title("Home")
-        Text(text = "Votre dernière nuit")
+        Text(text = "Your last night")
         DonutChartSample(modifier)
+        Text(text = "Your next night")
     }
 
 }

@@ -43,7 +43,7 @@ fun AdvicesScreen(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Title(title = "Conseils pour un meilleur sommeil")
+        Title(title = "Advices for a better sleep")
 
         LazyColumn(modifier = Modifier.weight(1f)) {
             items(advices) { advice ->

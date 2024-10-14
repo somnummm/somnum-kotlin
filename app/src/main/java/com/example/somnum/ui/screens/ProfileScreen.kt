@@ -1,5 +1,6 @@
 package com.example.somnum.ui.screens
 
+import android.content.Intent
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
@@ -26,6 +27,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.somnum.activities.LoginActivity
+import com.example.somnum.activities.MainActivity
 import com.example.somnum.activities.ProfileActivity
 import com.example.somnum.ui.components.ProfileField
 import com.example.somnum.ui.components.ProfileHeader
@@ -93,7 +96,14 @@ fun ProfileScreen(profileViewModel: ProfileViewModel, loginViewModel: LoginViewM
             )
 
             Button(
-                onClick = { (context as ProfileActivity).finish(); },
+                onClick = {
+                    context.startActivity(
+                        Intent(
+                            context,
+                            MainActivity::class.java
+                        )
+                    );(context as ProfileActivity).finish();
+                },
                 modifier = Modifier
                     .fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
@@ -106,7 +116,14 @@ fun ProfileScreen(profileViewModel: ProfileViewModel, loginViewModel: LoginViewM
             }
 
             Button(
-                onClick = { loginViewModel.logout(); (context as ProfileActivity).finish(); },
+                onClick = {
+                    loginViewModel.logout(); context.startActivity(
+                    Intent(
+                        context,
+                        LoginActivity::class.java
+                    )
+                );(context as ProfileActivity).finish();
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 8.dp),

@@ -101,11 +101,11 @@ fun LoginScreen(viewModel: LoginViewModel) {
                         if (result != null) {
                             Toast.makeText(context, result, Toast.LENGTH_SHORT).show()
                         } else {
-                            with(sharedPreferences.edit()) {
-                                putString("email", email)
-                                putString("password", password)
-                                apply()
-                            }
+//                            with(sharedPreferences.edit()) {
+//                                putString("email", email)
+//                                putString("password", password)
+//                                apply()
+//                            }
                             context.startActivity(Intent(context, MainActivity::class.java))
                             (context as LoginActivity).finish()
                         }

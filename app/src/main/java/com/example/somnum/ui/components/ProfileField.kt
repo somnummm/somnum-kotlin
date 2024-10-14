@@ -64,7 +64,7 @@ fun ProfileField(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(height.dp) // Fixez la hauteur ici
+                .height(height.dp) //
                 .background(
                     brush = backgroundGradient,
                     shape = RoundedCornerShape(16.dp)
@@ -94,10 +94,10 @@ fun ProfileField(
                 Text(
                     text = value ?: "",
                     fontSize = 16.sp,
-                    color = Color.Black,
+                    color = MaterialTheme.colorScheme.onPrimary,
                     modifier = Modifier
                         .fillMaxWidth(0.9f)
-                        .fillMaxHeight(), // Utilisez toute la hauteur
+                        .fillMaxHeight(),
                     maxLines = 1,
                     textAlign = TextAlign.Start
                 )

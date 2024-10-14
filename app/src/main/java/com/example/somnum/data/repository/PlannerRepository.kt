@@ -13,8 +13,7 @@ import java.time.LocalDateTime
 class PlannerRepository {
 
     suspend fun fetchPlanningForADay(date: LocalDate, userId: String): List<Planner> {
-        Log.i("TAG", "Ceci est un message d'information : ${date}")
-        val test = supabase
+        return supabase
             .from("planner")
             .select {
                 filter {
@@ -23,9 +22,16 @@ class PlannerRepository {
                 }
             }
             .decodeList<Planner>()
-        Log.i("TAG","Supabase return : $test")
-        return test
+
     }
+    suspend fun createPlanning(planner: Planner) {
+        val test = supabase
+            .from("planner")
+            .insert(planner)
+        Log.e("test",test.toString())
+
+    }
+
 
     suspend fun deletePlanning(id: Int) {
         supabase

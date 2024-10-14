@@ -40,4 +40,14 @@ class PlannerViewModel(private val plannerRepository: PlannerRepository = Planne
             }
         }
     }
+
+    fun createPlanning(date: LocalDate, sleepTime: String, wakeTime: String) {
+        val userId = "11c73277-1a06-4ab4-9d24-4eae0ae329d3"
+        val newPlanning = Planner(date = date.toString(), sleepTime = sleepTime, wakeTime = wakeTime, userId =userId )
+        viewModelScope.launch {
+            plannerRepository.createPlanning(newPlanning)
+            //add to plannings
+            _plannings.value += newPlanning
+        }
+    }
 }

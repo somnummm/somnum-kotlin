@@ -1,4 +1,4 @@
-package com.example.somnum.ui.components
+package com.example.somnum.ui.components.planner
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -33,7 +33,6 @@ fun CalendarComponent(
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        // En-tête du calendrier
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -44,7 +43,7 @@ fun CalendarComponent(
             }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                    contentDescription = "Mois précédent"
+                    contentDescription = "Previous month"
                 )
             }
 
@@ -59,14 +58,13 @@ fun CalendarComponent(
             }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                    contentDescription = "Mois suivant"
+                    contentDescription = "Next month"
                 )
             }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Jours de la semaine
         Row(modifier = Modifier.fillMaxWidth()) {
             val daysOfWeek = DayOfWeek.values()
             for (dayIndex in 0..6) {
@@ -82,7 +80,6 @@ fun CalendarComponent(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Grille des jours
         val firstDayOfMonth = currentMonth.atDay(1)
         val daysInMonth = currentMonth.lengthOfMonth()
         val startOffset = (firstDayOfMonth.dayOfWeek.value - 1) % 7

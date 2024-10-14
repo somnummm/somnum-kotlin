@@ -3,6 +3,7 @@ package com.example.somnum.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.somnum.data.network.supabase
+import com.example.somnum.data.repository.AuthRepository
 import io.github.jan.supabase.gotrue.auth
 import com.example.somnum.model.UserProfile
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,7 +11,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import org.slf4j.MDC.put
 
-class ProfileViewModel : ViewModel() {
+class ProfileViewModel(private val authRepository: AuthRepository = AuthRepository()) :
+    ViewModel() {
 
     private val _userProfile = MutableStateFlow<UserProfile?>(null)
     val userProfile: StateFlow<UserProfile?> get() = _userProfile
@@ -76,6 +78,12 @@ class ProfileViewModel : ViewModel() {
                     e.printStackTrace()
                 }
             }
+        }
+    }
+
+    fun logout() {
+        viewModelScope.launch {
+            authRepository.signOut()
         }
     }
 }

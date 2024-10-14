@@ -4,7 +4,6 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,24 +20,27 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.somnum.activities.MainActivity
+import com.example.somnum.activities.ProfileActivity
 import com.example.somnum.ui.components.ProfileField
 import com.example.somnum.ui.components.ProfileHeader
+import com.example.somnum.viewmodel.LoginViewModel
 import com.example.somnum.viewmodel.ProfileViewModel
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun ProfileScreen(viewModel: ProfileViewModel) {
-    // Observer le profil utilisateur
-    val userProfile = viewModel.userProfile.collectAsState().value
+fun ProfileScreen(profileViewModel: ProfileViewModel, loginViewModel: LoginViewModel) {
+    val userProfile = profileViewModel.userProfile.collectAsState().value
+    val context = LocalContext.current
 
-    // Charger le profil utilisateur
     LaunchedEffect(Unit) {
-        viewModel.loadUserProfile()
+        profileViewModel.loadUserProfile()
     }
 
     Column(
@@ -84,9 +86,8 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
                 fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.primary
             )
-            // Bouton pour sauvegarder les modifications
             Button(
-                onClick = { viewModel.saveProfileChanges() },
+                onClick = { profileViewModel.saveProfileChanges() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 16.dp),
@@ -98,8 +99,21 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             ) {
                 Text(text = "Save Changes")
             }
+
+            Button(
+                onClick = { loginViewModel.logout(); (context as ProfileActivity).finish(); },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Gray,
+                    contentColor = Color.White
+                ),
+                shape = RoundedCornerShape(8.dp)
+            ) {
+                Text(text = "Logout")
+            }
         } ?: run {
-            // Si le profil est en cours de chargement, afficher un indicateur de chargement
             CircularProgressIndicator(color = Color(0xFF1E88E5))
         }
     }

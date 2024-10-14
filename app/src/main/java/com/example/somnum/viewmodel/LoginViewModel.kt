@@ -18,4 +18,8 @@ class LoginViewModel(private val authRepository: AuthRepository = AuthRepository
         return authRepository.isLogged()
     }
 
+    fun logout() {
+        viewModelScope.launch { authRepository.signOut() }
+    }
+
 }

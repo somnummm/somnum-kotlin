@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.somnum.activities.MainActivity
 import com.example.somnum.activities.ProfileActivity
 
 @Composable
@@ -46,6 +47,7 @@ fun SomnumTopBar(titleText: String) {
                     ProfileActivity::class.java
                 )
             )
+            (context as MainActivity).finish()
         }) {
             Box(
                 modifier = Modifier

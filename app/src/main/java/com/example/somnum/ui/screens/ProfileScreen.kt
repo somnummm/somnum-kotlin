@@ -5,8 +5,10 @@ import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -24,7 +26,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.somnum.activities.MainActivity
 import com.example.somnum.activities.ProfileActivity
 import com.example.somnum.ui.components.ProfileField
 import com.example.somnum.ui.components.ProfileHeader
@@ -46,39 +47,43 @@ fun ProfileScreen(profileViewModel: ProfileViewModel, loginViewModel: LoginViewM
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background) // Couleur de fond plus douce
+            .background(MaterialTheme.colorScheme.background)
             .padding(32.dp),
         verticalArrangement = Arrangement.spacedBy(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Titre du profil
         Text(
             text = "Profile",
             fontSize = 26.sp,
             fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.primary // Couleur principale
+            color = MaterialTheme.colorScheme.primary
         )
 
-        // Si le profil utilisateur est chargé, afficher ses informations
         userProfile?.let { profile ->
-            // Afficher la photo de profil, le nom complet et la bio
             ProfileHeader(
-                fullName = profile.fullName?.let { it } ?: "Full Name",
-                bio = profile.bio?.let { it } ?: "Bio",
+                fullName = profile.fullName ?: "Full Name",
+                bio = profile.bio ?: "Bio",
                 profileImageUrl = null
             )
 
-            // Formatter la date de création
-            val createdAt = profile.createdAt?.let {
+            val createdAt = profile.createdAt.let {
                 val formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy")
                 val parsedDate = OffsetDateTime.parse(it)
                 parsedDate.format(formatter)
             } ?: "Date inconnue"
 
-            // Afficher les champs du profil
-            ProfileField("Email", profile.email) // Couleur mauve clair
-            ProfileField("Bed Time", profile.bedTime) // Couleur vert clair
-            ProfileField("Wake Up Time", profile.wakeUpTime) // Couleur rouge clair
+            ProfileField(
+                label = "Email",
+                value = profile.email
+            )
+            ProfileField(
+                label = "Last Bed Time",
+                value = profile.bedTime
+            )
+            ProfileField(
+                label = "Last Wake Up Time",
+                value = profile.wakeUpTime
+            )
             Text(
                 text = "Member since $createdAt",
                 modifier = Modifier
@@ -86,18 +91,18 @@ fun ProfileScreen(profileViewModel: ProfileViewModel, loginViewModel: LoginViewM
                 fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.primary
             )
+
             Button(
-                onClick = { profileViewModel.saveProfileChanges() },
+                onClick = { (context as ProfileActivity).finish(); },
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 16.dp),
+                    .fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     contentColor = MaterialTheme.colorScheme.onPrimary
                 ),
                 shape = RoundedCornerShape(8.dp)
             ) {
-                Text(text = "Save Changes")
+                Text(text = "Return to Home")
             }
 
             Button(

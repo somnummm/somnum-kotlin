@@ -1,5 +1,6 @@
 package com.example.somnum.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.somnum.data.network.supabase
@@ -14,10 +15,9 @@ import org.slf4j.MDC.put
 class ProfileViewModel(private val authRepository: AuthRepository = AuthRepository()) :
     ViewModel() {
 
-    private val _userProfile = MutableStateFlow<UserProfile?>(null)
+    val _userProfile = MutableStateFlow<UserProfile?>(null)
     val userProfile: StateFlow<UserProfile?> get() = _userProfile
 
-    // Propriété pour stocker l'utilisateur actuel
     private var currentUser = supabase.auth.currentUserOrNull()
 
     fun loadUserProfile() {
@@ -46,14 +46,8 @@ class ProfileViewModel(private val authRepository: AuthRepository = AuthReposito
         }
     }
 
-    fun updateUserProfile(updatedProfile: UserProfile) {
-        viewModelScope.launch {
-            // Mettre à jour l'état avec le profil mis à jour
-            _userProfile.value = updatedProfile
-        }
-    }
-
-    fun saveProfileChanges() {
+    fun saveProfileChanges(
+    ) {
         viewModelScope.launch {
             _userProfile.value?.let { profile ->
                 try {
@@ -73,8 +67,8 @@ class ProfileViewModel(private val authRepository: AuthRepository = AuthReposito
                             put("sleepNotes", profile.sleepNotes?.toString())
                         }
                     }
+                    Log.i("ProfileViewModel", "Profile updated!")
                 } catch (e: Exception) {
-                    // Gérer l'erreur ici (par exemple, en loggant ou en mettant à jour un état d'erreur)
                     e.printStackTrace()
                 }
             }

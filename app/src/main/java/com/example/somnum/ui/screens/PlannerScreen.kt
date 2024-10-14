@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -24,7 +25,9 @@ fun PlannerScreen(
 ) {
     val selectedDate by viewModel.selectedDate.collectAsState()
     val plannings by viewModel.plannings.collectAsState()
-
+    LaunchedEffect(key1 = Unit) {
+        viewModel.onDateSelected(selectedDate)
+    }
     Column(
         modifier = modifier
             .fillMaxSize()

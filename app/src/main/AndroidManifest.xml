@@ -42,6 +42,10 @@
             android:name=".activities.ProfileActivity"
             android:exported="true"
             android:theme="@style/Theme.Somnum" />
+        <activity
+            android:name=".activities.CompleteProfileActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Somnum" />
     </application>
 
 </manifest>

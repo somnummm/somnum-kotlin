@@ -21,7 +21,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Title("Home")
         Text(
             text = "Your last night",
             fontSize = 24.sp,

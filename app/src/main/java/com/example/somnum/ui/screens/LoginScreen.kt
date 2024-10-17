@@ -42,7 +42,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(viewModel: LoginViewModel) {
-    val sharedPreferences = LocalContext.current.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+    val sharedPreferences =
+        LocalContext.current.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
     var email by remember { mutableStateOf(sharedPreferences.getString("email", "") ?: "") }
     var password by remember { mutableStateOf(sharedPreferences.getString("password", "") ?: "") }
     val isLoading by remember { mutableStateOf(false) }
@@ -63,14 +64,20 @@ fun LoginScreen(viewModel: LoginViewModel) {
     }
 
     Column(
-        modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Box(
             modifier = Modifier
                 .size(130.dp)
-                .border(width = 2.dp, color = MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(64.dp))
+                .border(
+                    width = 2.dp,
+                    color = MaterialTheme.colorScheme.primary,
+                    shape = RoundedCornerShape(64.dp)
+                )
                 .align(Alignment.CenterHorizontally)
         ) {
             Image(

@@ -13,5 +13,4 @@ class SignUpViewModel(private val authRepository: AuthRepository = AuthRepositor
             onResult(result)
         }
     }
-
 }

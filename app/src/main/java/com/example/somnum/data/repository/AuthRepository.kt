@@ -3,6 +3,7 @@ package com.example.somnum.data.repository
 import com.example.somnum.data.network.supabase
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.providers.builtin.Email
+import io.github.jan.supabase.postgrest.postgrest
 
 class AuthRepository {
 
@@ -37,6 +38,16 @@ class AuthRepository {
             supabase.auth.signUpWith(Email) {
                 email = mail
                 password = passwd
+            }
+            val userId = supabase.auth.currentUserOrNull()?.id
+            if (userId != null) {
+                supabase.postgrest["UserInfo"]
+                    .upsert(
+                        mapOf(
+                            "uuid" to userId,
+
+                        )
+                    )
             }
             return null
         } catch (e: Exception) {

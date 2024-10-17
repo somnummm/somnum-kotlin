@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.sp
 import com.example.somnum.activities.LoginActivity
 import com.example.somnum.activities.MainActivity
 import com.example.somnum.activities.ProfileActivity
-import com.example.somnum.data.network.supabase
 import com.example.somnum.ui.components.ProfileField
 import com.example.somnum.ui.components.ProfileHeader
 import com.example.somnum.ui.viewmodel.LoginViewModel
@@ -123,6 +122,7 @@ fun ProfileScreen(profileViewModel: ProfileViewModel, loginViewModel: LoginViewM
             shape = RoundedCornerShape(8.dp)
         ) {
             Text(text = "Logout")
+
         }
     }
 }

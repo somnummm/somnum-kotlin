@@ -70,6 +70,33 @@ class ProfileViewModel(
             }
         } catch (e: Exception) {
             e.printStackTrace()
+
+                        data {
+                            put("fullName", profile.fullName)
+                            put("bio", profile.bio)
+                            put("avatarUrl", profile.avatarUrl)
+                            put("bedTime", profile.bedTime)
+                            put("wakeUpTime", profile.wakeUpTime)
+                            put("lastSleepDuration", profile.lastSleepDuration?.toString())
+                            put("avgSleepDuration", profile.avgSleepDuration?.toString())
+                            put("sleepQuality", profile.sleepQuality)
+                            put("sleepCycles", profile.sleepCycles?.toString())
+                            put("sleepGoals", profile.sleepGoals)
+                            put("preferredWakeupType", profile.preferredWakeupType)
+                            put("sleepNotes", profile.sleepNotes?.toString())
+                        }
+                    }
+                    Log.i("ProfileViewModel", "Profile updated!")
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+    fun logout() {
+        viewModelScope.launch {
+            authRepository.signOut()
         }
     }
 }

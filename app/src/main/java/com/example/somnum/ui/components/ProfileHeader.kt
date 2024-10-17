@@ -73,7 +73,6 @@ fun ProfileHeader(
                 .padding(top = 8.dp)
                 .padding(8.dp)
         )
-
         Text(
             text = bio,
             fontSize = 14.sp,

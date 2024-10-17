@@ -37,8 +37,8 @@ fun Router() {
             SomnumTopBar(
                 titleText = when (selectedItem) {
                     0 -> "Home"
-                    1 -> "Planner"
-                    2 -> "Simulation"
+                    1 -> "Simulation"
+                    2 -> "Planner"
                     3 -> "Advices"
                     else -> "Somnum"
                 }

@@ -30,8 +30,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.somnum.R
+import com.example.somnum.activities.CompleteProfileActivity
 import com.example.somnum.activities.LoginActivity
-import com.example.somnum.activities.MainActivity
 import com.example.somnum.activities.SignUpActivity
 import com.example.somnum.ui.components.SomnumInput
 import com.example.somnum.ui.viewmodel.SignUpViewModel
@@ -110,7 +110,7 @@ fun SignUpScreen(viewModel: SignUpViewModel) {
                         if (result != null) {
                             Toast.makeText(context, result, Toast.LENGTH_SHORT).show()
                         } else {
-                            context.startActivity(Intent(context, MainActivity::class.java))
+                            context.startActivity(Intent(context, CompleteProfileActivity::class.java))
                             (context as SignUpActivity).finish()
                         }
                     })

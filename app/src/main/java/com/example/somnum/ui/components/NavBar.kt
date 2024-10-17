@@ -76,7 +76,7 @@ fun Router() {
         when (selectedItem) {
             0 -> HomeScreen(modifier = Modifier.padding(innerPadding))
             1 -> SimulationScreen(modifier = Modifier.padding(innerPadding))
-            2 -> PlannerScreen(modifier = Modifier.padding(innerPadding),plannerViewModel)
+            2 -> PlannerScreen(modifier = Modifier.padding(innerPadding), plannerViewModel)
             3 -> AdvicesScreen(modifier = Modifier.padding(innerPadding))
         }
     }

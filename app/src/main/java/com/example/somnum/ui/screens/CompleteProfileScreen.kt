@@ -2,7 +2,6 @@ package com.example.somnum.ui.screens
 
 import android.content.Intent
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,7 +16,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -48,7 +46,6 @@ fun CompleteProfileScreen(viewModel: ProfileViewModel) {
 
     var fullName by rememberSaveable { mutableStateOf(userProfile?.fullName ?: "") }
     var bio by rememberSaveable { mutableStateOf(userProfile?.bio ?: "") }
-    var showToast by remember { mutableStateOf(false) }
 
     LaunchedEffect(userProfile) {
         userProfile?.let {
@@ -66,12 +63,6 @@ fun CompleteProfileScreen(viewModel: ProfileViewModel) {
                     bio = bio
                 )
                 viewModel.saveProfileChanges(profile = updatedProfile)
-                if (!showToast) {
-                    showToast = true
-                    Toast.makeText(context, "Profile updated!", Toast.LENGTH_SHORT).show()
-                    delay(2000)
-                    showToast = false
-                }
             } else {
                 Log.d("CompleteProfileScreen", "User profile is null")
             }

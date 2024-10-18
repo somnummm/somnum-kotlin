@@ -25,7 +25,7 @@ import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun DateSelector(date: LocalDate, plannings: List<Planner>, viewModel: PlannerViewModel) {
+fun DateSelector(date: LocalDate, plannings: List<Planner?>, viewModel: PlannerViewModel) {
     var timeSelector by remember { mutableStateOf(false) }
 
     Card(
@@ -56,7 +56,7 @@ fun DateSelector(date: LocalDate, plannings: List<Planner>, viewModel: PlannerVi
                     viewModel
                 )
             } else {
-                PlanningItem(plannings[0])
+                plannings[0]?.let { PlanningItem(it) }
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }

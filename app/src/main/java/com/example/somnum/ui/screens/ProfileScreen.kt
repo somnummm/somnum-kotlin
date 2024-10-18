@@ -2,6 +2,7 @@ package com.example.somnum.ui.screens
 
 import android.content.Intent
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +19,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,26 +33,38 @@ import androidx.compose.ui.unit.sp
 import com.example.somnum.activities.LoginActivity
 import com.example.somnum.activities.MainActivity
 import com.example.somnum.activities.ProfileActivity
+import com.example.somnum.data.entities.Planner
 import com.example.somnum.data.network.supabase
+import com.example.somnum.data.repository.PlannerRepository
 import com.example.somnum.ui.components.ProfileField
 import com.example.somnum.ui.components.ProfileHeader
 import com.example.somnum.ui.viewmodel.LoginViewModel
+import com.example.somnum.ui.viewmodel.PlannerViewModel
 import com.example.somnum.viewmodel.ProfileViewModel
 import io.github.jan.supabase.gotrue.auth
+import java.time.LocalDate
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun ProfileScreen(profileViewModel: ProfileViewModel, loginViewModel: LoginViewModel) {
+fun ProfileScreen(
+    profileViewModel: ProfileViewModel,
+    loginViewModel: LoginViewModel,
+    plannerRepository: PlannerRepository
+) {
     val context = LocalContext.current
     val user = supabase.auth.currentUserOrNull()
 
     val userProfile = profileViewModel.userProfileInfos
     val isLoading = profileViewModel.isLoading
+    var lastPlanning by remember { mutableStateOf<List<Planner>?>(null) }
 
     LaunchedEffect(Unit) {
         profileViewModel.loadUserProfile()
+        if (user?.id != null) {
+            lastPlanning = plannerRepository.fetchPlanningForADay(LocalDate.now(), user.id)
+        }
     }
 
     Column(
@@ -81,7 +98,16 @@ fun ProfileScreen(profileViewModel: ProfileViewModel, loginViewModel: LoginViewM
             parsedDate.format(formatter)
         } ?: "Date inconnue"
 
-        ProfileField(label = "Email", value = user?.email ?: "Email non disponible")
+        ProfileField(label = "Email", value = user?.email ?: "Data unavailable")
+        ProfileField(
+            label = "Last sleep time",
+            value = lastPlanning?.get(0)?.sleepTime ?: "Data unavailable"
+        )
+        ProfileField(
+            label = "Last wake time",
+            value = lastPlanning?.get(0)?.wakeTime ?: "Data unavailable"
+
+        )
 
         Text(
             text = "Member since $createdAt",

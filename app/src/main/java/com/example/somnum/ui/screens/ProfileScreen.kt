@@ -64,6 +64,9 @@ fun ProfileScreen(
         profileViewModel.loadUserProfile()
         if (user?.id != null) {
             lastPlanning = plannerRepository.fetchPlanningForADay(LocalDate.now(), user.id)
+            if (lastPlanning!!.size == 0) {
+                lastPlanning = null
+            }
         }
     }
 

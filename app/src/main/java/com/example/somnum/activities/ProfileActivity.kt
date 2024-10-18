@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
+import com.example.somnum.data.repository.PlannerRepository
 import com.example.somnum.ui.screens.ProfileScreen
 import com.example.somnum.ui.theme.SomnumTheme
 import com.example.somnum.ui.viewmodel.LoginViewModel
@@ -19,7 +20,7 @@ class ProfileActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SomnumTheme {
-                ProfileScreen(ProfileViewModel(), LoginViewModel())
+                ProfileScreen(ProfileViewModel(), LoginViewModel(), PlannerRepository())
             }
         }
     }

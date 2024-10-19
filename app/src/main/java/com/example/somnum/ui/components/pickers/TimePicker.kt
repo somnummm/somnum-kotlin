@@ -52,7 +52,7 @@ fun TimePicker(
                     selectedMinute = newMinute
                     onTimeSelected(LocalTime.of(selectedHour, newMinute))
                 },
-                range = 0..59
+                range = 0..55
             )
         }
     }

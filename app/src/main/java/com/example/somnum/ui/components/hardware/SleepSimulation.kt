@@ -99,7 +99,7 @@ fun SleepSimulationComponent(
 
     Column(modifier = modifier.fillMaxWidth()) {
         Text(
-            text = "Simulation de Sommeil ($hours heures)",
+            text = "Sleep simulation for ($hours hours)",
             style = MaterialTheme.typography.headlineSmall,
             modifier = Modifier.padding(bottom = 16.dp)
         )

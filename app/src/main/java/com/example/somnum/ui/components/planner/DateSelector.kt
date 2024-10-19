@@ -56,7 +56,7 @@ fun DateSelector(date: LocalDate, plannings: List<Planner?>, viewModel: PlannerV
                     viewModel
                 )
             } else {
-                plannings[0]?.let { PlanningItem(it) }
+                plannings[0]?.let { PlanningItem(it, viewModel) }
                 Spacer(modifier = Modifier.height(8.dp))
             }
         }

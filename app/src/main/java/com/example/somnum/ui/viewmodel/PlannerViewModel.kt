@@ -72,4 +72,10 @@ class PlannerViewModel(
             _plannings.value += newPlanning
         }
     }
+
+    suspend fun deletePlanning(id: Int) {
+        plannerRepository.deletePlanning(id)
+        //remove from plannings
+        _plannings.value = _plannings.value.filter { it?.id != id }
+    }
 }

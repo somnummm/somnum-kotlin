@@ -4,17 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.somnum.ui.screens.SignUpScreen
+import com.example.somnum.ui.screens.CompleteProfileScreen
 import com.example.somnum.ui.theme.SomnumTheme
-import com.example.somnum.ui.viewmodel.SignUpViewModel
+import com.example.somnum.viewmodel.ProfileViewModel
 
-class SignUpActivity : ComponentActivity() {
+class CompleteProfileActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             SomnumTheme {
-                SignUpScreen(SignUpViewModel())
+                CompleteProfileScreen(ProfileViewModel())
             }
         }
     }

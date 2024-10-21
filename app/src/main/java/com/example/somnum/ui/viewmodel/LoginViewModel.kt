@@ -1,4 +1,4 @@
-package com.example.somnum.viewmodel
+package com.example.somnum.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,6 +16,10 @@ class LoginViewModel(private val authRepository: AuthRepository = AuthRepository
 
     fun isLogged(): Boolean {
         return authRepository.isLogged()
+    }
+
+    fun logout() {
+        viewModelScope.launch { authRepository.signOut() }
     }
 
 }

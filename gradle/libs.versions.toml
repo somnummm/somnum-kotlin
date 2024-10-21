@@ -1,6 +1,8 @@
 [versions]
 agp = "8.5.1"
 bom = "2.0.0-rc-1"
+chart = "Beta-0.0.5"
+coilCompose = "2.4.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -17,6 +19,8 @@ navigationComposeVersion = "2.8.0"
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-compose-v280 = { module = "androidx.navigation:navigation-compose", version.ref = "navigationComposeVersion" }
 bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bom" }
+chart = { module = "io.github.thechance101:chart", version.ref = "chart" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
